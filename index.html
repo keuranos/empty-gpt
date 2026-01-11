@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice Nudge Studio · Micro-SaaS for predictable cash flow</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="brand">
+          <span class="brand__logo">⚡</span>
+          <span>Invoice Nudge Studio</span>
+        </div>
+        <button class="nav__cta" type="button" data-scroll="pricing">Start for €19/mo</button>
+      </nav>
+      <div class="hero__content">
+        <div>
+          <span class="tag">Micro-SaaS idea · low-maintenance</span>
+          <h1>Automated payment reminders for freelancers and agencies.</h1>
+          <p>
+            Invoice Nudge Studio is a lightweight web app that turns late invoices into on-time payments.
+            Upload a client, set a due date, and send polite, branded reminders in one click.
+          </p>
+          <div class="hero__actions">
+            <button class="primary" type="button" data-scroll="builder">Build your first reminder</button>
+            <button class="secondary" type="button" data-scroll="model">View revenue plan</button>
+          </div>
+          <div class="hero__stats">
+            <div>
+              <strong>€500–€1,000</strong>
+              <span>Target monthly revenue</span>
+            </div>
+            <div>
+              <strong>25–45</strong>
+              <span>Paying clients at €19–€29</span>
+            </div>
+            <div>
+              <strong>&lt;1 hr/week</strong>
+              <span>Operational effort</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero__card">
+          <h3>Why it works</h3>
+          <ul>
+            <li>Reminders reduce late payments by 30–50% for freelancers.</li>
+            <li>Users plug in existing email + payment links.</li>
+            <li>No complex integrations needed for an MVP.</li>
+          </ul>
+          <div class="hero__note">
+            MVP focus: reminder templates + tracking dashboard. Upsell later with automated follow-ups.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="model" class="section">
+        <div class="section__header">
+          <h2>Business model in a glance</h2>
+          <p>Simple subscription pricing + upsell = predictable income with low maintenance.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Target niche</h3>
+            <p>Freelancers, boutique studios, consultants, and small agencies billing €2k–€10k/month.</p>
+            <ul>
+              <li>Feel payment delays immediately.</li>
+              <li>Need professional communication quickly.</li>
+              <li>Usually manage invoices alone.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Pricing stack</h3>
+            <div class="pricing">
+              <div>
+                <h4>Starter</h4>
+                <p>€19/mo · 20 clients</p>
+              </div>
+              <div>
+                <h4>Growth</h4>
+                <p>€29/mo · 60 clients</p>
+              </div>
+              <div>
+                <h4>Premium</h4>
+                <p>€59/mo · automated follow-ups</p>
+              </div>
+            </div>
+            <p class="muted">Only 25–45 customers needed to hit €500–€1,000 MRR.</p>
+          </div>
+          <div class="card">
+            <h3>Low-effort acquisition</h3>
+            <ul>
+              <li>Partner with bookkeeping firms + freelance communities.</li>
+              <li>Offer a free reminder template lead magnet.</li>
+              <li>Product-led growth via “Powered by Invoice Nudge” emails.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="builder" class="section alt">
+        <div class="section__header">
+          <h2>Reminder builder (MVP preview)</h2>
+          <p>Generate a ready-to-send reminder. Saved locally so you can keep your list of clients.</p>
+        </div>
+        <div class="builder">
+          <form id="reminder-form" class="form">
+            <label>
+              Client name
+              <input type="text" name="client" placeholder="Studio Luna" required />
+            </label>
+            <label>
+              Client email
+              <input type="email" name="email" placeholder="hello@client.com" required />
+            </label>
+            <label>
+              Invoice amount (€)
+              <input type="number" name="amount" min="1" step="1" placeholder="1200" required />
+            </label>
+            <label>
+              Due date
+              <input type="date" name="due" required />
+            </label>
+            <label>
+              Payment link
+              <input type="url" name="link" placeholder="https://pay.me/invoice-123" required />
+            </label>
+            <button class="primary" type="submit">Generate reminder</button>
+          </form>
+          <div class="preview">
+            <h3>Email preview</h3>
+            <div id="email-preview" class="preview__content">
+              Fill out the form to generate a polite reminder.
+            </div>
+            <button id="copy-button" class="secondary" type="button">Copy email text</button>
+            <p id="copy-status" class="muted" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <h3>Saved clients</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Email</th>
+                <th>Amount</th>
+                <th>Due</th>
+                <th>Reminder</th>
+              </tr>
+            </thead>
+            <tbody id="client-table">
+              <tr>
+                <td colspan="5" class="muted">No clients saved yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="pricing" class="section">
+        <div class="section__header">
+          <h2>Revenue calculator</h2>
+          <p>Adjust the sliders to see how fast you can reach €500–€1,000 MRR.</p>
+        </div>
+        <div class="calculator">
+          <div>
+            <label for="price">Average subscription price (€)</label>
+            <input id="price" type="range" min="15" max="60" value="25" />
+          </div>
+          <div>
+            <label for="clients">Number of paying clients</label>
+            <input id="clients" type="range" min="10" max="80" value="30" />
+          </div>
+          <div class="calculator__output">
+            <div>
+              <span>Monthly recurring revenue</span>
+              <strong id="mrr">€750</strong>
+            </div>
+            <div>
+              <span>Weekly hours needed</span>
+              <strong id="hours">~1 hr</strong>
+            </div>
+          </div>
+          <p class="muted">Support time estimate assumes 5 minutes per client per week.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>Launch plan</strong>
+        <ol>
+          <li>Week 1: Build MVP + landing page.</li>
+          <li>Week 2: Onboard 5 beta freelancers from communities.</li>
+          <li>Week 3: Charge €19/mo, collect testimonials.</li>
+          <li>Week 4: Add automated follow-ups for upsell.</li>
+        </ol>
+      </div>
+      <div>
+        <strong>Minimum effort stack</strong>
+        <ul>
+          <li>Frontend: HTML/CSS/JS (this page).</li>
+          <li>Backend: serverless email API (SendGrid, MailerSend).</li>
+          <li>Payments: Stripe billing portal.</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
